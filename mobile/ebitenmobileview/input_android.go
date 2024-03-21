@@ -17,7 +17,6 @@ package ebitenmobileview
 import (
 	"encoding/hex"
 	"hash/crc32"
-	"unicode"
 
 	"github.com/hajimehoshi/ebiten/v2/internal/gamepad"
 	"github.com/hajimehoshi/ebiten/v2/internal/gamepaddb"
@@ -144,7 +143,7 @@ func OnKeyDownOnAndroid(keyCode int, unicodeChar int, source int, deviceID int) 
 			keys[key] = struct{}{}
 		}
 		var runes []rune
-		if r := rune(unicodeChar); r != 0 && unicode.IsPrint(r) {
+		if r := rune(unicodeChar); r != 0 && ui.ExtendedIsPrint(r) {
 			runes = []rune{r}
 		}
 		updateInput(runes)

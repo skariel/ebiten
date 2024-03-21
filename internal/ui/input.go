@@ -73,8 +73,12 @@ func (i *InputState) copyAndReset(dst *InputState) {
 	i.DroppedFiles = nil
 }
 
+func ExtendedIsPrint(r rune) bool {
+	return unicode.IsPrint(r) || r == 13
+}
+
 func (i *InputState) appendRune(r rune) {
-	if !unicode.IsPrint(r) {
+	if !ExtendedIsPrint(r) {
 		return
 	}
 	i.Runes = append(i.Runes, r)

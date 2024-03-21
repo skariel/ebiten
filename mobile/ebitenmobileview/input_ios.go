@@ -69,7 +69,7 @@ func UpdatePressesOnIOS(phase int, keyCode int, keyString string) {
 		var runes []rune
 		if phase == C.UITouchPhaseBegan {
 			for _, r := range keyString {
-				if !unicode.IsPrint(r) {
+				if !ExtendedIsPrint(r) {
 					continue
 				}
 				runes = append(runes, r)
